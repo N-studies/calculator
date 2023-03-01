@@ -1,0 +1,39 @@
+.container {
+    
+    width:fit-content;
+    border: 2px solid black;
+}
+.screen {
+    display: flex;
+    justify-content: end;
+    font-size: large;
+}
+/*
+.row1 {
+    border: 2px solid red;
+}
+
+.row2 {
+    border: 2px solid blue;
+}
+
+.row3 {
+    border: 2px solid greenyellow;
+}
+
+.row4 {
+    border: 2px solid pink; 
+}
+
+.row5 {
+    border: 2px solid yellow;
+} */
+
+.zero {
+    width: 64px;
+}
+
+button {
+    width: 30px;
+}
+
