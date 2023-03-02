@@ -1,3 +1,4 @@
+// Calculator operation
 function add(a, b) {
   return a + b;
 }
@@ -36,42 +37,31 @@ function clear(arr) {
     arr.splice(0, arr.length);
   }
 }
+let firstValue = 0;
+let secondValue = 0;
+let numberStorage = [];
 
-
-let value1 = 0;
-let value2 = 0;
-let storage = [];
 let operation;
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     if (button.className == "number") {
-      storage.push(Number(button.textContent));
-      value1 = storage.join("");
-      
-    } else if (button.classList == "clear") {
-      clear(storage);
-
-      //else if operator,delete storage and use it for value2 
+      numberStorage.push(button.textContent);
     } else if (button.className == "operations") {
-      clear(storage);
       operation = button.textContent;
-
-
+      firstValue = Number(numberStorage.join(""));
+      clear(numberStorage);
+    } else if (button.className == "equal") {
+      secondValue = Number(numberStorage.join(""));
+      clear(numberStorage);
+      console.log(operate(firstValue, secondValue, operation));
+      numberStorage.push(operate(firstValue, secondValue, operation));
+    } else if ((button.className = "clear")) {
+      clear(numberStorage);
+      firstValue = 0;
+      secondValue = 0;
     }
-     // else if, when equal is pressed operate
-    else if (button.classList == "equal") {
-      operate(value1,value2,operation);
-      
-      
-    }
-   
-    //console.log(button);
-    console.log(storage);
-    
-    console.log(value1);
-    console.log(value2);
-    operate(value1,value2,operation);
-
   });
 });
+
+// 1) firstValue 2)operation 3) secondValue
