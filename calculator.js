@@ -40,6 +40,7 @@ function clear(arr) {
 let firstValue = 0;
 let secondValue = 0;
 let numberStorage = [];
+let screen = document.querySelector(".screen");
 
 let operation;
 const buttons = document.querySelectorAll("button");
@@ -47,6 +48,7 @@ buttons.forEach((button) => {
   button.addEventListener("click", () => {
     if (button.className == "number") {
       numberStorage.push(button.textContent);
+      screen.textContent = numberStorage.join("");
     } else if (button.className == "operations") {
       operation = button.textContent;
       firstValue = Number(numberStorage.join(""));
@@ -54,14 +56,14 @@ buttons.forEach((button) => {
     } else if (button.className == "equal") {
       secondValue = Number(numberStorage.join(""));
       clear(numberStorage);
+      screen.textContent = operate(firstValue, secondValue, operation);
       console.log(operate(firstValue, secondValue, operation));
       numberStorage.push(operate(firstValue, secondValue, operation));
     } else if ((button.className = "clear")) {
       clear(numberStorage);
       firstValue = 0;
       secondValue = 0;
+      screen.textContent = 0;
     }
   });
 });
-
-// 1) firstValue 2)operation 3) secondValue
