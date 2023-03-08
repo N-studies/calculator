@@ -62,6 +62,7 @@ buttons.forEach((button) => {
       clear(numberStorage);
       screen.textContent = operate(firstValue, secondValue, operation);
       console.log(operate(firstValue, secondValue, operation));
+      console.log(numberStorage)
       numberStorage.push(operate(firstValue, secondValue, operation));
       clear(numberStorage);
       firstValue = operate(firstValue, secondValue, operation);
