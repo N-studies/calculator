@@ -37,7 +37,7 @@ function clear(arr) {
     arr.splice(0, arr.length);
   }
 }
-let storedValue = 0
+let storedValue = 0;
 let firstValue = 0;
 let secondValue = 0;
 let numberStorage = [];
@@ -54,24 +54,26 @@ buttons.forEach((button) => {
       operation = button.textContent;
       firstValue = Number(numberStorage.join(""));
       clear(numberStorage);
-      
-    } else if (button.className == "equal" || button.className == "operations") {
+    } else if (
+      button.className == "equal" ||
+      button.className == "operations"
+    ) {
       secondValue = Number(numberStorage.join(""));
       clear(numberStorage);
       screen.textContent = operate(firstValue, secondValue, operation);
       console.log(operate(firstValue, secondValue, operation));
       numberStorage.push(operate(firstValue, secondValue, operation));
-      clear(numberStorage)
-      firstValue = operate(firstValue, secondValue, operation)
-      if (button.classList == "operations")
-        {operation = button.textContent;}
+      clear(numberStorage);
+      firstValue = operate(firstValue, secondValue, operation);
+      if (button.classList == "operations") {
+        operation = button.textContent;
+      }
     } else if ((button.className = "clear")) {
       clear(numberStorage);
       firstValue = 0;
       secondValue = 0;
       screen.textContent = 0;
-      storedValue = 0
-    } 
-    
+      storedValue = 0;
+    }
   });
 });
