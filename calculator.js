@@ -30,75 +30,66 @@ function operate(a, b, operation = "+") {
       return divide(a, b);
       break;
   }
-}
-function clear(arr) { 
-  return arr.splice(0, arr.length);
-}
 
-function firstValue(arr,btn) {
-   arr.push(btn.textContent)
-   return Number(arr.join(""))
+// ----clear
 }
-
-function secondValue(number) {
-  // How do we get the second value?
-}
-
-function storage(arr,btn) {
-  // Use this to push items from button event listener to an array
-  arr.push(btn.textContent)
-}
-let screen = document.querySelector(".screen")
-let numberStore1 = []
-let numberStore2 = []
-let operation
-let storedValue 
-let storedValue2
-let result
-const buttons = document.querySelectorAll("button")
-buttons.forEach((button) => { 
-button.addEventListener("click",() => {
- if (button.className == "number" && operation == undefined) {
-  storedValue = firstValue(numberStore1,button)
-  screen.textContent = storedValue
- 
- }
- if (button.className == "clear") {
-  clear(numberStore1)
-  clear(numberStore2)
-  operation = undefined
-  screen.textContent = 0
-  storedValue = 0
- }
- if (button.className == "operations") {
-  operation = button.textContent
+function clearAll(arr,div) {
+  arr.splice(0, arr.length);
+  div.textContent = 0;
+  return
   
+}
 
- }
- if (button.className == "number" && operation != undefined && storedValue != 0) {
-  storedValue2 = firstValue(numberStore2,button)
-  screen.textContent = storedValue2
- }
+function clearStor(arr) {
+  arr.splice(0, arr.length);
+  return;
+}
 
- if (button.className == "equal") {
-  result = operate(storedValue, storedValue2, operation)
-  screen.textContent = result
-  storedValue = result
-  clear(numberStore2)
-
+//----values
+function value(arr, btn) {
+  arr.push(btn.textContent);
+  return Number(arr.join(""));
 }
 
 
 
- console.log(numberStore1)
- console.log(numberStore2)
- console.log(storedValue)
+//---- operations
+let operator;
+
+
+
+
+//-----------------
+let result
+let initValue
+;
+let numberStorage = [];
+let screen = document.querySelector(".screen");
+
+
+const numbers = document.querySelectorAll(".number")
+numbers.forEach((number) => {
+  number.addEventListener("click",() =>  {
+   screen.textContent = value(numberStorage,number)
+  })
+}) 
+
+
+const operations = document.querySelectorAll(".operations")
+operations.forEach((operation) => { 
+  operation.addEventListener("click", () => {
+    operator = operation.textContent;
+    initValue = screen.textContent
+    clearStor(numberStorage)
+    console.log(operator,initValue)
+  })
 })
 
-
+const clear = document.querySelector(".clear")
+clear.addEventListener("click", () => {
+  numberStorage.splice(0, numberStorage.length);
+  screen.textContent = 0;
 })
-
-
 
 
 
@@ -144,4 +135,4 @@ buttons.forEach((button) => {
       storedValue = 0;
     }
   });
-}); */ 
+}); */
